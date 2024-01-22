@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Create_change</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/users/create}">
+    <label for="email">Enter email</label>
+    <input type="text" id="email" name="email">
+    <br>
+    <label for="firstname">Enter firstname</label>
+    <input type="text" id="firstname" name="firstname">
+    <br>
+
+    <label for="lastname">Enter lastname</label>
+    <input type="text" id="lastname" name="lastname">
+    <br>
+
+    <label for="birthdate">Enter birthdate</label>
+    <input type="text" id="birthdate" name="birthdate">
+    <br>
+
+    <input type="submit" value="Create!">
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>Change</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/users/change}" th:object="${user}">
+    <input type="hidden" th:attr="value=${user.getId()}" name="id">
+
+    <label for="email">Enter email</label>
+    <input type="text" th:value="*{email}" id="email" name="email">
+    <br>
+    <label for="firstname">Enter firstname</label>
+    <input type="text" th:value="*{firstname}" id="firstname" name="firstname">
+    <br>
+
+    <label for="lastname">Enter lastname</label>
+    <input type="text" th:value="*{lastname}" id="lastname" name="lastname">
+    <br>
+
+    <label for="birthdate">Enter birthdate</label>
+    <input type="text" th:value="*{birthdate}" id="birthdate" name="birthdate">
+    <br>
+
+
+    <input type="submit" value="Change!">
+</form>
+
+</body>
+</html>

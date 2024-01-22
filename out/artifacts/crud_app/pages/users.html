@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.com"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>BirthDate</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:utext="${user.getId()}">ID</td>
+        <td th:utext="${user.getEmail()}">Email</td>
+        <td th:utext="${user.getFirstname()}">Firstname</td>
+        <td th:utext="${user.getLastname()}">Lastname</td>
+        <td th:utext="${user.getBirthdate()}">BirthDate</td>
+        <td>
+            <form th:method="GET" th:action="@{/users/change}">
+                <input type="hidden" th:attr="value=${user.getId()}" name="id">
+                <input type="submit" value="Change">
+            </form>
+            <form th:method="POST" th:action="@{/users/delete}">
+                <input type="hidden" th:attr="value=${user.getId()}" name="id">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+    </tr>
+</table>
+<br/>
+<form th:method="GET" th:action="@{/users/create}">
+    <input type="submit" value="New User!">
+</form>
+</body>
