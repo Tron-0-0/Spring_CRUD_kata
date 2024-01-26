@@ -9,11 +9,11 @@ public interface UserDao {
 
     List<User> getAllUsers();
 
-    Optional<User> findById(Long id);
+    User findById(Long id);
 
     void save(User user);
 
-    User update(User user);
+    void update(User user);
 
-    boolean deleteById(Long id);
+    void deleteById(Long id);
 }

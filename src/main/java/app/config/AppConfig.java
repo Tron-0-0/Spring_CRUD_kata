@@ -41,7 +41,7 @@ public class AppConfig {
         adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
 
         Properties properties = new Properties();
-//        properties.put("hibernate.hbm2ddl.auto", "validate");
+        properties.put("hibernate.hbm2ddl.auto", "create-drop");
         properties.put("hibernate.format_sql", true);
 
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();

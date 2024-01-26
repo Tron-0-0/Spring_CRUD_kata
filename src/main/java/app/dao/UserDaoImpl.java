@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class UserDaoImpl implements UserDao {
@@ -21,8 +20,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
-        return Optional.of(entityManager.find(User.class, id));
+    public User findById(Long id) {
+        return entityManager.find(User.class, id);
     }
 
     @Override
@@ -31,15 +30,15 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User update(User user) {
-        return entityManager.merge(user);
+    public void update(User user) {
+        entityManager.merge(user);
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public void deleteById(Long id) {
         Query query = entityManager.createQuery("delete from User where id = :id")
                 .setParameter("id", id);
 
-        return query.executeUpdate() > 0;
+        query.executeUpdate();
     }
 }

@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userDao.findById(id).orElse(new User());
+        return userDao.findById(id);
     }
 
     public void save(User user) {
